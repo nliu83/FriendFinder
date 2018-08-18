@@ -17,9 +17,44 @@
         <!-- Font Awesome Glyhicons -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!-- link to style.css -->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- Jquery CDN -->
 
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+        <style type = 'text/css'>
+        
+        .headings {
+
+        font-size: 20px;
+        font-weight: bold;
+        }
+        .subHeadings {
+
+        font-size: 15px;
+
+        }
+
+        .surveyQs {
+
+        padding-bottom: 12px;
+
+        }
+
+        .form-control {
+
+        font-size: 15px;
+
+        }
+
+        .pgTitle {
+
+            font-weight: bold;
+        }
+        
+        </style>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,18 +73,15 @@
 
             <h2 class = 'headings'>About You</h2>
 
-            
-
             <div class="form-group">
                 <label for="name" class = 'subHeadings'>Name (Required)</label>
-                <input type="Name" class="form-control" id="user-name">
+                <input type="Name" class="form-control" id="newFriend">
             </div>
             
             <div class="form-group">
                 <label for="name" class = 'subHeadings'>Link to Photo Image (Required)</label>
                 <input type="photoLink" class="form-control" id="photoLink">
             </div>
-
 
             <div class="surveyQs">
 
@@ -59,7 +91,7 @@
                 </p>
 
                 
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q1Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -78,7 +110,7 @@
                 </p>
 
                 
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q2Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -95,9 +127,8 @@
 
                 <p class='subHeadings'>You find it easy to stay relaxed and focused even when there is some pressure.
                 </p>
-
-                
-                <select class="form-control" id="qOptions">
+    
+                <select class="form-control" id="q3Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -115,8 +146,7 @@
                 <p class='subHeadings'>You rarely do something just out of sheer curiosity.
                 </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q4Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -134,8 +164,7 @@
                 <p class='subHeadings'>People can rarely upset you.
                 </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q5Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -152,8 +181,7 @@
 
                 <p class='subHeadings'>It is often difficult for you to relate to other people’s feelings.                  </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q6Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -171,8 +199,7 @@
                 <p class='subHeadings'>In a discussion, truth should be more important than people’s sensitivities.
                 </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q7Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -190,8 +217,7 @@
                 <p class='subHeadings'>You rarely get carried away by fantasies and ideas.
                 </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q8Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -209,8 +235,7 @@
                 <p class='subHeadings'>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
                 </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q8Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -227,8 +252,7 @@
 
                 <p class='subHeadings'>You feel more energetic after spending time with a group of people.                </p>
 
-                
-                <select class="form-control" id="qOptions">
+                <select class="form-control" id="q10Options">
                     <option value="" hidden>Select an option</option>
                     <option value = '1'>1</option>
                     <option value = '2'>2</option>
@@ -239,9 +263,10 @@
 
             </div>
 
-            <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
+            <button type="submit" class="btn btn-primary submit">Submit</button>
             
             <br>
+            <hr>
 
             <footer class="footer">
                 <div class="container">
@@ -251,6 +276,35 @@
 
         </div>
         
-        <script src="" async defer></script>
+        <script type='text/javascript'>
+
+        $(".submit").on("click", function(event) {
+
+            event.preventDefault();
+
+            var newFriends = {
+
+                name: $('#newFriend').val().trim(), 
+                photoLink: $('#photoLink').val().trim(),
+                scores: $('#qOptions').val().trim()
+
+            }
+
+            console.log(newFriends);
+
+        });
+
+            
+
+        $.post('/api/survey', newFriends, 
+        function(data) {
+
+            alert('Yay! you made a new friend');
+
+            
+        });
+        
+        
+        </script>
     </body>
 </html>
