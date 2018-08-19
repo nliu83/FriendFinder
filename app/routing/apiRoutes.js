@@ -16,10 +16,45 @@ module.exports = function(app) {
 
     app.post('/api/friends', function(request, response) {
 
-        friendsData.push(request.body);
-        res.json(true);
+        var friendMatch = {
 
-        console.log(friendsData);
+            name: '',
+            photoLink: '', 
+            surveyDiff: 100
+
+        }
+
+        var userInfo = request.body;
+        var userScore = userInfo.scores;
+
+        console.log(userScore);
+
+        var difference;
+
+        for (var i = 0; i < friendsData.length; i++) {
+
+            console.log(friendsData[i]);
+
+            difference = 0;
+
+            for (var j = 0; j < friendsData[i].scores.length; j++) {
+
+                //difference = absolute value of user sccores and the ones in the friends array. 
+                difference += Math.abs(parseInt(userScore[j] - parseInt(friendsData[i].scores[j])));
+
+
+            }
+            if (difference <= friendMatch.surveyDiff) {
+                friendMatch.name = friendsData[i].name;
+                friendMatch.photoLink = friendsData[i].photoLink;
+                friendMatch.surveyDiff = difference
+            }
+        };
+
+        friendsData.push(userInfo);
+        console.log(friendMatch)
+        response.json(friendMatch);
+
     });
 
 };
