@@ -37,7 +37,7 @@ module.exports = function(app) {
 
             difference = 0;
 
-            for (var j = 0; j < friendsData[i].scores.length; j++) {
+            for (var j = 0; j < friendsData[i].scores[i]; j++) {
 
                 //difference = absolute value of user sccores and the ones in the friends array. 
                 difference += Math.abs(parseInt(userScore[j] - parseInt(friendsData[i].scores[j])));
